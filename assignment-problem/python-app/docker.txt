@@ -1,0 +1,7 @@
+ldocker build -t python-app-image .
+
+Remover docker after stop
+docker run -p 3000:3000 -rm --name python-app python-app-image
+
+Rerun docker with attach terminal and interact with container
+docker start -a -i python-app
