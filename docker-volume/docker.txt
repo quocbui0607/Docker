@@ -1,10 +1,13 @@
 docker build -t node-app:volumes .
 
 Run docker with volume
-docker run -d -p 3000:80 --name node-app-volumes -v ${PWD}/feedback:/app/feedback -v app/node_modules node-app:volumes  
+docker run -d -p 3000:80 --name node-app-volumes -v F:/IT/Docker/docker-volume:/app -v app/node_modules node-app:volumes  
+
+Run docker with env file
+docker run -d -p 3000:8000 --rm --env-file ./.env --name node-app-env -v F:/IT/Docker/docker-volume:/app -v app/node_modules node-app:env
 
 Trace log like terminal
 docker logs node-app-volumes
 
 This will get error
-docker run -d -p 3000:80 --name node-app-volumes -v F:/IT/Docker/docker-volume:/app node-app:volumes
+docker run -d -p 3000:80 --name node-app-volumes-errors -v F:/IT/Docker/docker-volume/feedback:/app/feedback -v F:/IT/Docker/docker-volume:/app node-app:volumes
