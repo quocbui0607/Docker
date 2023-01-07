@@ -22,7 +22,7 @@ docker run --name mongodb -v data:/data/db --network goals-net --rm -d -e MONGO_
 RUN BACKEND
 cd backend
 docker build -t goals-backend-image .
-docker run --name goals-backend -p 80:80 --network goals-net -d --rm -v ${PWD}:/app -v ${PWD}/logs:/app/logs -v /app/node_modules goals-backend-image
+docker run --name goals-backend -p 80:80 --network goals-net -d --rm -v ${PWD}:/app -v ${PWD}/logs:/app/logs -v /app/node_modules -e MONGO_INITDB_ROOT_USERNAME=wong -e MONGO_INITDB_ROOT_PASSWORD=secret goals-backend-image
 
 RUN FRONTEND
 cd frontend
