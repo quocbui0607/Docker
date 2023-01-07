@@ -27,7 +27,7 @@ docker run --name goals-backend -p 80:80 --network goals-net -d --rm -v ${PWD}:/
 RUN FRONTEND
 cd frontend
 docker build -t goals-react-image .
-docker run --name goals-react -p 3000:3000 -it -d --rm goals-react-image
+docker run -v F:\IT\Docker\multi-docker\frontend\src:/app/src --name goals-react -p 3000:3000 -it -d --rm goals-react-image
 
 - P/S: no need to set network for frontend due to we dont need to communicate with database, we still need export port for backend.
 Because frontend start server and read code from browser which is on our localhost not on docker, so we need to export port of backend for frontend to communicate.
