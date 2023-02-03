@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: story-deployment
 spec: 
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: story
@@ -14,4 +14,24 @@ spec:
     spec:
       containers:
         - name: story
-          image: quocbui0607/k8s-data-demo
+          image: quocbui0607/k8s-data-demo:2
+          env:
+            - name: STORY_FOLDER
+              # value: "story"
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variable
+                  key: ENV_STORY_FOLDER
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+      volumes:
+        - name: story-volume
+          # emptyDir: {}
+
+          # hostPath:
+          #   path: /data
+          #   type: DirectoryOrCreate
+
+          persistentVolumeClaim:
+            claimName: host-pvc
