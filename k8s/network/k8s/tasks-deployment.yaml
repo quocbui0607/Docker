@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: tasks
-          image: quocbui0607/k8s-task-demo:1
+          image: quocbui0607/k8s-task-demo
           env:
             - name: AUTH_ADDRESS
-              # value: "10.99.104.252"
+              # value: "10.111.231.44"
               value: "auth-service.default"
             - name: TASKS_FOLDER
               value: tasks
