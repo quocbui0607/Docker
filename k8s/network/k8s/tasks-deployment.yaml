@@ -4,7 +4,7 @@ metadata:
   name: tasks-deployment
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: tasks
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tasks
-          image: quocbui0607/k8s-task-demo
+          image: quocbui0607/k8s-task-demo:1
           env:
             - name: AUTH_ADDRESS
               # value: "10.99.104.252"
